@@ -1,0 +1,230 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Project Risk Predictor
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.8@aae2be0913b8c6f0b80cff58e08d7a8b4c214569b41778413fcaea204561ff16
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1772681282109-source-1772682195492-target
+      source: '1772681282109'
+      sourceHandle: source
+      target: '1772682195492'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1772621885868-source-1772681282109-target
+      source: '1772621885868'
+      sourceHandle: source
+      target: '1772681282109'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Начало
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: jira_context
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: jira_context
+        - default: ''
+          hint: ''
+          label: tg_context
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: tg_context
+      height: 135
+      id: '1772621885868'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: a66f07a9-a7d2-4ef1-a1f8-03753c967b31
+          role: system
+          text: "Ты — аналитик рисков программного проекта.\n\nТвоя задача — анализировать\
+            \ обсуждение команды разработки и состояние задач Jira,\nчтобы определить\
+            \ возможные риски выполнения проекта.\n\n---\n\nВходные данные\n\nТебе\
+            \ передаются:\n\n1. Список \"Задачи-кандидаты\".\nЭто задачи, которые\
+            \ система считает наиболее связанными с обсуждением команды.\n\n2. Контекст\
+            \ задач из Jira.\nДля каждой задачи доступны:\n- ключ задачи\n- название\n\
+            - статус\n- исполнитель\n- количество залогированных часов\n- количество\
+            \ оставшихся часов\n- время последнего обновления\n\n3. История обсуждения\
+            \ команды в Telegram.\n\n---\n\nПравила анализа\n\nАнализируй ТОЛЬКО задачи\
+            \ из списка кандидатов.\n\nНе добавляй другие задачи проекта.\n\nЕсли\
+            \ задача из списка кандидатов не связана с обсуждением —\nне включай её\
+            \ в список рисков.\n\nСвязывай обсуждение только с задачами,\nчьи названия\
+            \ или смысл семантически совпадают с обсуждением.\n\nИспользуй только\
+            \ факты из:\n• обсуждения Telegram\n• данных задач Jira\n\nНе придумывай\
+            \ причины риска, если они не подтверждаются этими данными.\n\n---\n\n\
+            Как определять риск\n\nНаличие работы или запланированных задач НЕ является\
+            \ риском.\n\nНе считай риском:\n- разработку\n- интеграцию\n- настройку\n\
+            - планирование работ\n- обсуждение этапов проекта\n- обсуждение реализации\
+            \ задачи\n- распределение задач\n\nЭто нормальная часть разработки.\n\n\
+            Если обсуждение содержит только план работ или описание задач,\nриск должен\
+            \ быть в диапазоне 0–20%.\n\n---\n\nРиск существует только если есть явные\
+            \ сигналы проблемы.\n\nПримеры сигналов риска:\n\n• ошибка или баг  \n\
+            • функционал не работает  \n• тесты падают  \n• проблемы с CI  \n• блокер\
+            \  \n• задержка выполнения  \n• команда не успевает  \n• неизвестны сроки\
+            \  \n• конфликт требований  \n• необходимость переделки или отката  \n\
+            \nДополнительные сигналы риска из Jira:\n\n• отсутствие назначенного исполнителя\
+            \  \n• долгое отсутствие обновлений задачи  \n\nЕсли таких сигналов нет\
+            \ — риск должен быть низким.\n\n---\n\nЧто нужно определить\n\nПроанализируй\
+            \ обсуждение и определи:\n\n• какие задачи действительно обсуждаются \
+            \ \n• есть ли признаки проблем  \n• какие задачи находятся под риском\
+            \  \n• общий риск проекта\n\nВ список рисков включай только задачи,\n\
+            для которых есть подтверждённые сигналы проблемы.\n\n---\n\nФормат ответа\n\
+            \nОтвет должен быть строго в JSON формате:\n\n{\n \"project_risk\": number,\n\
+            \ \"issues\": [\n   {\n     \"key\": \"ISSUE_KEY\",\n     \"risk\": number,\n\
+            \     \"reason\": \"краткое объяснение риска\"\n   }\n ],\n \"summary\"\
+            : \"краткое описание ситуации в проекте\"\n}\n\nГде:\n\nproject_risk —\
+            \ общий риск проекта от 0 до 100  \nrisk — риск конкретной задачи от 0\
+            \ до 100"
+        - id: d05a3e63-ed26-45da-97e4-9ef8a82a2b6e
+          role: user
+          text: "Контекст проекта Jira:\n{{#1772621885868.jira_context#}}\n\nОбсуждение\
+            \ команды в Telegram:\n{{#1772621885868.tg_context#}}\n\nПроанализируй\
+            \ риски проекта.\nОпредели, какие задачи находятся под риском.\n\nОтветь\
+            \ в JSON:\n\n{\n \"project_risk\": number,\n \"issues\": [\n   {\n   \
+            \  \"key\": \"...\",\n     \"risk\": number,\n     \"reason\": \"...\"\
+            \n   }\n ]\n}"
+        selected: false
+        title: LLM 1
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1772681282109'
+      position:
+        x: 401.8747910918786
+        y: 303
+      positionAbsolute:
+        x: 401.8747910918786
+        y: 303
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1772681282109'
+          - text
+          value_type: string
+          variable: result
+        selected: false
+        title: Output
+        type: end
+      height: 88
+      id: '1772682195492'
+      position:
+        x: 693.4888621764483
+        y: 303
+      positionAbsolute:
+        x: 693.4888621764483
+        y: 303
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -21.85743858190949
+      y: 110.38930126913954
+      zoom: 0.8705505632961253
+  rag_pipeline_variables: []
