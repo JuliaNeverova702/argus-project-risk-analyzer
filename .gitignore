@@ -13,3 +13,7 @@ telegram_offset.json
 # OS
 .DS_Store
 Thumbs.db
+
+.env
+messages_history.json
+telegram_offset.json
