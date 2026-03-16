@@ -107,6 +107,25 @@ Backend
 - JSON
 
 ---
+## LLM Workflow (Dify)
+
+Логика анализа рисков реализована через workflow в Dify.
+
+Экспорт workflow находится в репозитории:
+
+```
+dify/project-risk-predictor.yml
+```
+
+Этот файл можно импортировать в Dify:
+
+```
+Workflow → Import DSL
+```
+
+После импорта будет создан workflow анализа рисков проекта,
+используемый ARGUS для обработки контекста задач и обсуждений команды.
+---
 
 # Как работает система
 
@@ -137,8 +156,6 @@ docker compose up -d
 ```
 http://localhost/v1/workflows/run
 ```
-
----
 
 Установить зависимости
 
