@@ -13,17 +13,7 @@ ARGUS — это AI-ассистент, который анализирует с
 
 ## Архитектура
 
-Jira API + Telegram API
-↓
-Data aggregation
-↓
-Context builder
-↓
-LLM analysis (Dify)
-↓
-Risk report
-↓
-Telegram bot
+Jira API + Telegram API -> Data aggregation -> Context builder -> LLM analysis (Dify) -> Risk report -> Telegram bot
 
 ---
 
