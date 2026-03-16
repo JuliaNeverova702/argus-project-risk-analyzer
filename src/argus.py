@@ -18,8 +18,7 @@ JIRA_TOKEN = os.getenv("JIRA_TOKEN")
 DIFY_API_KEY = os.getenv("DIFY_API_KEY")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 
-TELEGRAM_CHAT_ID = 6373277315
-TARGET_CHAT = -5188678095
+TARGET_CHAT = int(os.getenv("TARGET_CHAT"))
 
 JIRA_URL = "https://jira.eltc.ru/rest/api/2/search"
 DIFY_URL = "http://localhost/v1/workflows/run"
@@ -41,11 +40,7 @@ USER_MAP = {
     "shcherbashinn": {
         "jira_name": "Щербашин Никита",
         "role": "Project manager",
-    },
-    "Sidyakin": {
-        "jira_name": "Сидякин Женя",
-        "role": "Генеральный директор, заказчик",
-    },
+    }
 }
 
 # =========================================================
@@ -151,8 +146,7 @@ def send_telegram(text):
     url = f"{TELEGRAM_API}/sendMessage"
 
     payload = {
-        #"chat_id": TARGET_CHAT,
-        "chat_id": TELEGRAM_CHAT_ID,
+        "chat_id": TARGET_CHAT
         "text": text,
         "parse_mode": "HTML",
     }
