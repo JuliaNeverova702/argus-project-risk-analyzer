@@ -100,7 +100,7 @@ Backend
 
 - Jira REST API
 - Telegram Bot API
-- Dify API (LLM workflows)
+- Dify (self-hosted LLM workflow platform)
 
 Хранение данных
 
@@ -120,15 +120,37 @@ Backend
 
 # Запуск проекта
 
-Установить зависимости
-pip install -r requirements.txt
+## Запуск Dify (LLM-движок анализа)
 
+ARGUS использует локально запущенный сервис **Dify** для анализа проектных рисков.
 
-Запустить систему
-python src/argus.py
+Запустить Dify можно через Docker:
 
+```bash
+git clone https://github.com/langgenius/dify.git
+cd dify/docker
+docker compose up -d
+```
+
+После запуска API будет доступен по адресу:
+
+```
+http://localhost/v1/workflows/run
+```
 
 ---
+
+Установить зависимости
+
+```bash
+pip install -r requirements.txt
+```
+
+Запустить систему
+
+```bash
+python src/argus.py
+```
 
 # Roadmap
 
