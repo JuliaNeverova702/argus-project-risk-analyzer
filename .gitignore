@@ -1,0 +1,15 @@
+# python
+__pycache__/
+*.pyc
+
+# environment
+.env
+venv/
+
+# local data
+messages_history.json
+telegram_offset.json
+
+# OS
+.DS_Store
+Thumbs.db
