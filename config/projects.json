@@ -1,0 +1,74 @@
+{
+  "rpd": {
+    "name": "rpd",
+    "jql": "(\"Epic Link\" = ITS-16120 OR parent = ITS-16120) AND statusCategory != Done",
+	"jql_all": "(\"Epic Link\" = ITS-16120 OR parent = ITS-16120) AND statusCategory != Done AND statusCategory != \"To Do\"",
+	"chat_id": -5188678095,
+	"protocol_bot": "MyMeetAIBot",
+	"confluence_pages": [393782979],
+    "user_map": {
+        "julia_neverova_dev": {
+        "jira_name": "Юлия Неверова",
+        "role": "PL/SQL developer, разработчик Борда-бота"
+		},
+		"shkuratov_i": {
+			"jira_name": "Шкуратов Иван",
+			"role": "1C developer"
+		},
+		"shcherbashinn": {
+			"jira_name": "Щербашин Никита",
+			"role": "Project manager"
+		},
+		"Sidyakin": {
+			"jira_name": "Сидякин Женя",
+			"role": "Генеральный директор, заказчик"
+		}
+    }
+  },
+  "city_of_talents": {
+	  "name": "city_of_talents",
+	  "jql": "project = ORCPSE AND cf[15352] = \"Город Талантов (SIT-2520095)\" AND statusCategory != Done",
+	  "jql_all": "project = ORCPSE AND cf[15352] = \"Город Талантов (SIT-2520095)\" AND statusCategory != Done AND statusCategory != \"To Do\"",
+	  "chat_id": -1003005310384,
+	  "protocol_bot": "se_meet_ai_bot",
+	  "confluence_pages": [],
+	  "user_map": {
+		"olegshustov": {
+			"jira_name": "Олег Шустов",
+			"role": "менеджер проектов, ответственность за работу с ИИ, проектную документацию, проект MVP CRM Город Талантов"
+		},
+		"daria_ger": {
+			"jira_name": "Дарья Герасимчук",
+			"role": "продакт менеджер, ответственность за метрики, продуктовые гипотезы, UX продуктов"
+		},
+		"hiSanyaaa": {
+			"jira_name": "Александр Щетников",
+			"role": "разработчик, ответственность за продукты (фронтенд и бэкенд)"
+		},
+		"gumbart": {
+			"jira_name": "Михаил Люкшин",
+			"role": "разработчик, ответственность за продукты (бэкенд)"
+		},
+		"Krigston": {
+			"jira_name": "Кирилл Седов",
+			"role": "разработчик, ответственность за продукты (фронтенд)"
+		},
+		"kirill_elizar5039": {
+			"jira_name": "Кирилл Елизаров",
+			"role": "дизайнер, ответственность за дизайны продуктов и сервисов"
+		},
+		"regg_u": {
+			"jira_name": "Константин Савин",
+			"role": "менеджер, ответственность за тестирование, протоколирование, ведение задач"
+		},
+		"defo_on": {
+			"jira_name": "Дмитрий Соломатин",
+			"role": "заказчик, ответственность за стратегические цели и задачи"
+		},
+		"d3ple": {
+			"jira_name": "Данил Дунайцев",
+			"role": "разработчик, ответственность за продукты (фронтенд)"
+		}
+	}
+  }
+}
