@@ -17,3 +17,4 @@ Thumbs.db
 .env
 messages_history.json
 telegram_offset.json
+config/projects.json
