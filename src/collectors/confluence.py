@@ -24,7 +24,7 @@ def load_confluence(project):
 
     for page_id in page_ids:
         try:
-            url = f"https://confluence.eltc.ru/rest/api/content/{page_id}"
+            url = f"https://confluence.ru/rest/api/content/{page_id}" # use your confluence's url
 
             r = requests.get(
                 url,
